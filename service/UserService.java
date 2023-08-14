@@ -8,8 +8,6 @@ import account.utils.LoggingAction;
 import account.validator.user.ValidateUserPassword;
 import account.validator.user.ValidateUserRoleUpdate;
 import jakarta.transaction.Transactional;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -25,8 +23,6 @@ import java.util.*;
 
 @Service
 public class UserService implements UserDetailsService {
-    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
-
     @Autowired
     UserRepository userRepository;
     @Autowired
@@ -39,7 +35,6 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email);
-        logger.info("CHECK USER: {}", user);
         if (user == null) {
             throw new UsernameNotFoundException("User not found.");
         }

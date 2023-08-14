@@ -4,7 +4,6 @@ import account.exception.accountant.PaymentValidationException;
 import account.model.payment.Payment;
 import account.model.payment.PaymentResponse;
 import account.model.user.User;
-import account.repository.UserGroupRepository;
 import account.repository.UserRepository;
 import account.utils.MonthEnum;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +22,6 @@ import java.util.stream.Collectors;
 public class EmployeeService {
     @Autowired
     UserRepository userRepository;
-    @Autowired
-    UserGroupRepository userGroupRepository;
 
     public ResponseEntity<?> getUserPayment(Authentication authentication, String period) {
         if (!authentication.isAuthenticated()) {

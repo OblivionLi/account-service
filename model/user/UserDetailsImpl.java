@@ -1,7 +1,5 @@
 package account.model.user;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,7 +9,6 @@ import java.util.Collection;
 import java.util.Set;
 
 public class UserDetailsImpl implements UserDetails {
-    private static final Logger logger = LoggerFactory.getLogger(UserDetailsImpl.class);
     private final String name;
     private final String lastname;
     private final String password;
@@ -36,9 +33,6 @@ public class UserDetailsImpl implements UserDetails {
             authorities.add(new SimpleGrantedAuthority(userGroup.getCode().toUpperCase()));
         }
 
-        logger.info("CHECK LIST OF AUTHORITIES: {}", authorities);
-        logger.info("CHECK USER NAME: {}", email);
-        logger.info("CHECK USER LOCKED: {}", isLocked);
         return authorities;
     }
 

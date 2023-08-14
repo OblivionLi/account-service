@@ -1,27 +1,19 @@
 package account.service;
 
 import account.model.user.User;
-import account.model.user.UserGroup;
-import account.model.user.UserRole;
-import account.repository.UserGroupRepository;
 import account.repository.UserRepository;
 import account.utils.LoggingAction;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LoginAttemptService {
     private static final int MAX_ATTEMPT = 4;
-    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     SecurityService securityService;
     @Autowired
     UserRepository userRepository;
-    @Autowired
-    UserGroupRepository userGroupRepository;
 
     public void loginSuccess(String username) {
         User user = userRepository.findByEmail(username);
